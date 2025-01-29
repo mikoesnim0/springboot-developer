@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TutorController {
     @GetMapping(path="/hello")
     public String hello() {
-        return "Hello World";
+        return "<html><body><h1>Hello World</h1></body></html>";
     }
 
     @GetMapping(path="/echo/{message}")
