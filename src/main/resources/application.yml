@@ -7,5 +7,18 @@ spring:
       name: admin   # login ID
       password: pass1234 # login password (for test, delete for deployment)
 
+  profiles:
+    active: dev
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.edusync.tutor: DEBUG
