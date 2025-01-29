@@ -2,23 +2,52 @@ spring:
   application:
     name: tutor
 
-  security:
-    user:
-      name: admin   # login ID
-      password: pass1234 # login password (for test, delete for deployment)
+  # H2 Database 설정
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
 
-  profiles:
-    active: dev
+  # H2 Console 설정
+  h2:
+    console:
+      enabled: true  # H2 Console 사용 여부
+      path: /h2-console  # H2 Console 접속 주소
+      settings:
+        web-allow-others: false
+
+  # JPA 설정
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop  # 서버 시작시 테이블 생성, 종료시 삭제
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true  # SQL 쿼리 출력
+        use_sql_comments: true
+    defer-datasource-initialization: true  # 초기 데이터 삽입을 위한 설정
+
+  # 인코딩 설정
   http:
     encoding:
       charset: UTF-8
       enabled: true
       force: true
 
+# 서버 포트 설정
 server:
   port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
 
+# 로깅 설정
 logging:
   level:
-    org.springframework.web: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG  # SQL 쿼리 로깅
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # SQL 쿼리 파라미터 로깅
     org.edusync.tutor: DEBUG

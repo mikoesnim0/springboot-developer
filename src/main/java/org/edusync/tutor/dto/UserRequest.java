@@ -7,6 +7,7 @@ public class UserRequest {
     private String username;
     private String phoneNumber;
     private String email;
+    private Boolean isKorean;
 
     // Constructor
     public UserRequest() {
@@ -41,5 +42,13 @@ public class UserRequest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getIsKorean() {
+        return isKorean;
+    }
+
+    public void setIsKorean(Boolean isKorean) {
+        this.isKorean = isKorean;
     }
 }

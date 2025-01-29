@@ -32,4 +32,9 @@ public class GetController {
         String result = "Summation: " + summation + ", Multiply: " + multiply;
         return ResponseEntity.ok(result);
     }
-} 
+
+    @DeleteMapping(path="/user/{userId}/delete")
+    public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
+        return ResponseEntity.ok("User deleted successfully");
+    }
+}
